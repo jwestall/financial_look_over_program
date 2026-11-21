@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from ui.loans import Loans
 from ui.overview import Overview
 
 class Window:
@@ -13,7 +14,7 @@ class Window:
         overview = Overview(notebook)
         overview.pack(fill='both', expand=True)
 
-        loans = ttk.Frame(notebook)
+        loans = Loans(notebook)
         loans.pack(fill='both', expand=True)
 
         expences = ttk.Frame(notebook)
