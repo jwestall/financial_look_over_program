@@ -16,7 +16,15 @@ class Window:
         loans = ttk.Frame(notebook)
         loans.pack(fill='both', expand=True)
 
+        expences = ttk.Frame(notebook)
+        expences.pack(fill='both', expand=True)
+
+        income = ttk.Frame(notebook)
+        income.pack(fill='both', expand=True)
+
         notebook.add(overview, text='Overview')
-        notebook.add(tab2, text='Loans')
+        notebook.add(loans, text='Loans')
+        notebook.add(expences, text='Expences')
+        notebook.add(income, text='Income')
 
         return root
