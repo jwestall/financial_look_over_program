@@ -1,3 +1,4 @@
+import helpers.numbers_helper as num_helper
 import tkinter as tk
 from tkinter import ttk
 
@@ -11,13 +12,13 @@ class Overview:
         label_1 = tk.Label(sub_frame_1, text="Total Income: ")
         self.value_1 = tk.Label(sub_frame_1, text="DUMMY TOTAL")
 
-        label_2 = tk.Label(sub_frame_2, text="Total Expences: ")
+        label_2 = tk.Label(sub_frame_2, text="Total Spendings: ")
         self.value_2 = tk.Label(sub_frame_2, text="DUMMY TOTAL")
 
         label_3 = tk.Label(sub_frame_3, text="Net Money: ")
         self.value_3 = tk.Label(sub_frame_3, text="DUMMY TOTAL")
 
-        button = tk.Button(frame, text="Recalculate")
+        button = tk.Button(frame, text="Recalculate", command=self.refresh(self))
 
         label_1.pack(padx=10, pady=10, side=tk.LEFT)
         self.value_1.pack(padx=10, pady=10, side=tk.LEFT)
@@ -32,4 +33,28 @@ class Overview:
 
         button.pack(padx=10, pady=10)
 
+        self.refresh(self)
+
         return frame
+
+    def refresh(self):
+        incomes = num_helper.get_incomes()
+        tot_i = 0
+        for income in incomes:
+            tot_i = tot_i + income.monthly.value
+
+        expences = num_helper.get_expences()
+        loans = num_helper.get_loans()
+
+        tot_s = 0
+        for expence in expences:
+            tot_s = tot_s + expence.amount.value
+
+        for loan in loans:
+            tot_s = tot_s + loan.payment.value
+
+        net = tot_i - tot_s
+
+        self.value_1.config(text=f"${tot_i:,.2f}")
+        self.value_2.config(text=f"${tot_s:,.2f}")
+        self.value_3.config(text=f"${net:,.2f}")

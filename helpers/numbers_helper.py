@@ -10,7 +10,7 @@ file = os.path.expanduser('~/Library/Mobile Documents/com~apple~Numbers/Document
 def get_loans():
     doc = Document(file)
     sheets = doc.sheets
-    tables = sheets("Loans").tables
+    tables = sheets["Loans"].tables
     loans = []
 
     for row in tables[0].rows():
@@ -23,19 +23,20 @@ def get_loans():
 def get_expences():
     doc = Document(file)
     sheets = doc.sheets
-    tables = sheets("Expences").tables
+    tables = sheets["Expences"].tables
     expences = []
 
     for row in tables[0].rows():
         if row[0].value != None:
             expence = Expance(row[0], row[1])
+            expences.append(expence)
 
     return expences
 
 def get_incomes():
     doc = Document(file)
     sheets = doc.sheets
-    tables = sheets("Income").tables
+    tables = sheets["Income"].tables
     incomes = []
 
     for row in tables[0].rows():
@@ -48,4 +49,4 @@ def get_incomes():
 def get_meta():
     doc = Document(file)
     sheets = doc.sheets
-    tables = sheets("Meta").tables
+    tables = sheets["Meta"].tables
