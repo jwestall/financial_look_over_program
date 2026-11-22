@@ -20,6 +20,18 @@ def get_loans():
 
     return loans
 
+def remoe_loan(name):
+    doc = Document(file)
+    sheets = doc.sheets
+    tables = sheets["Loans"].tables
+
+    for row in tables[0].rows():
+        if row[0].value == name:
+            tables[0].rows().remove(row)
+            print(f"Found row {row[0].value}")
+
+    doc.save(file)
+
 def get_expences():
     doc = Document(file)
     sheets = doc.sheets
