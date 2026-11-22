@@ -29,5 +29,5 @@ class Loans:
             row.pack()
 
     def remove_row(self, loan):
-        num_helper.remoe_loan(loan)
+        num_helper.remove_loan(loan)
         self.refresh_rows(self, self.frame)

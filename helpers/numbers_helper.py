@@ -20,7 +20,7 @@ def get_loans():
 
     return loans
 
-def remoe_loan(name):
+def remove_loan(name):
     doc = Document(file)
     sheets = doc.sheets
     tables = sheets["Loans"].tables
