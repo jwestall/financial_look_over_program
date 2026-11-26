@@ -15,10 +15,12 @@ class Loans:
         self.loans = num_helper.get_loans()
 
         for loan in self.loans:
+            label = loan.label.value
+
             row = tk.Frame(parent)
-            name = tk.Label(row, text=loan.label.value)
+            name = tk.Label(row, text=label)
             total = tk.Label(row, text=f'${loan.total.value:,.2f}')
-            remove = tk.Button(row, text="Remove", command=lambda: self.remove_row(loan.label.value))
+            remove = tk.Button(row, text="Remove", command=lambda label=label: self.remove_row(label))
 
             name.pack(padx=10, pady=10, side=tk.LEFT)
             total.pack(padx=10, pady=10, side=tk.LEFT)
