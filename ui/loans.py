@@ -3,12 +3,10 @@ import tkinter as tk
 from tkinter import ttk
 
 class Loans:
-    def __new__(self, parent):
+    def __init__(self, parent):
         self.frame = tk.Frame(parent)
         self.loans = []
-        self.refresh_rows(self, self.frame)
-
-        return self.frame
+        self.refresh_rows(self.frame)
 
     def refresh_rows(self, parent):
         for widget in parent.winfo_children():
@@ -20,7 +18,7 @@ class Loans:
             row = tk.Frame(parent)
             name = tk.Label(row, text=loan.label.value)
             total = tk.Label(row, text=f'${loan.total.value:,.2f}')
-            remove = tk.Button(row, text="Remove", command=lambda: self.remove_row(self, loan.label.value))
+            remove = tk.Button(row, text="Remove", command=lambda: self.remove_row(loan.label.value))
 
             name.pack(padx=10, pady=10, side=tk.LEFT)
             total.pack(padx=10, pady=10, side=tk.LEFT)
@@ -30,4 +28,4 @@ class Loans:
 
     def remove_row(self, loan):
         num_helper.remove_loan(loan)
-        self.refresh_rows(self, self.frame)
+        self.refresh_rows(self.frame)

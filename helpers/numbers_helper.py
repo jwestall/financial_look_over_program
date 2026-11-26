@@ -28,7 +28,6 @@ def remove_loan(name):
     for row in tables[0].rows():
         if row[0].value == name:
             tables[0].rows().remove(row)
-            print(f"Found row {row[0].value}")
 
     doc.save(file)
 

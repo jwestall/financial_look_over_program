@@ -12,10 +12,13 @@ class Window:
         notebook.pack(fill='both', pady=10, expand=True)
 
         overview = Overview(notebook)
-        overview.pack(fill='both', expand=True)
-
         loans = Loans(notebook)
-        loans.pack(fill='both', expand=True)
+
+        overview_page = overview.frame
+        overview_page.pack(fill='both', expand=True)
+
+        loans_page = loans.frame
+        loans_page.pack(fill='both', expand=True)
 
         expences = ttk.Frame(notebook)
         expences.pack(fill='both', expand=True)
@@ -23,8 +26,8 @@ class Window:
         income = ttk.Frame(notebook)
         income.pack(fill='both', expand=True)
 
-        notebook.add(overview, text='Overview')
-        notebook.add(loans, text='Loans')
+        notebook.add(overview_page, text='Overview')
+        notebook.add(loans_page, text='Loans')
         notebook.add(expences, text='Expences')
         notebook.add(income, text='Income')
 
